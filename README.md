@@ -1,37 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+██╗  ██╗███████╗███╗   ██╗██████╗ ██╗ ██████╗ ██╗   ██╗███████╗ ██████╗ ███████╗
+██║  ██║██╔════╝████╗  ██║██╔══██╗██║██╔═══██╗██║   ██║██╔════╝██╔═══██╗██╔════╝
+███████║█████╗  ██╔██╗ ██║██████╔╝██║██║   ██║██║   ██║█████╗  ██║   ██║███████╗
+██╔══██║██╔══╝  ██║╚██╗██║██╔══██╗██║██║▄▄ ██║██║   ██║██╔══╝  ██║   ██║╚════██║
+██║  ██║███████╗██║ ╚████║██║  ██║██║╚██████╔╝╚██████╔╝███████╗╚██████╔╝███████║
+╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝ ╚══▀▀═╝  ╚═════╝ ╚══════╝ ╚═════╝ ╚══════╝
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> _"The best way to predict the future is to invent it."_ — Alan Kay
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+An immersive retro operating system portfolio. Boot up, explore, interact.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+### `> system.info`
 
-To learn more about Next.js, take a look at the following resources:
+| module | tech |
+|--------|------|
+| `runtime` | Next.js 16, React 19, TypeScript |
+| `render` | Three.js, GSAP, CSS Animations |
+| `style` | Retro phosphor CRT aesthetic |
+| `audio` | YouTube IFrame API (lofi) |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### `> ls /features`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+drwxr-xr-x  boot_sequence/     CRT-style animated boot
+drwxr-xr-x  desktop/           Draggable windows, taskbar, clock
+drwxr-xr-x  browser/           In-OS project browser with iframe embedding
+drwxr-xr-x  terminal/          Skills displayed as terminal output
+drwxr-xr-x  background/        Procedural animated lofi gradients
+drwxr-xr-x  lofi_widget/       Ambient audio player
+drwxr-xr-x  wall_stickers/     Ghost-text decorations
+```
 
-## Deploy on Vercel
+### `> ./install.sh`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+git clone https://github.com/hsnrique/hsnriqueDOTcom.git
+cd hsnriqueDOTcom
+npm install
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# hsnriqueDOTcom
+### `> cat LICENSE`
+
+MIT — fork it, break it, make it yours.
+
+---
+
+<p align="center">
+  <sub>built with 🖤 by <a href="https://github.com/hsnrique">@hsnrique</a></sub>
+</p>
