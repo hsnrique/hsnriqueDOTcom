@@ -1,26 +1,191 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: #0a0a0a;
+  --color-foreground: #e0e0e0;
+  --color-phosphor: #00ff41;
+  --color-amber: #ffb000;
+  --color-crt-white: #e0e0e0;
+  --color-window-bg: rgba(10, 10, 10, 0.85);
+  --color-window-border: rgba(0, 255, 65, 0.15);
+  --color-window-header: rgba(0, 255, 65, 0.08);
+  --color-taskbar: rgba(5, 5, 5, 0.92);
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-ibm-plex-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+
+
+* {
+  cursor: default;
+}
+
+a, button, [role="button"] {
+  cursor: pointer;
+}
+
+::selection {
+  background: rgba(0, 255, 65, 0.3);
+  color: #00ff41;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #0a0a0a;
+  color: #e0e0e0;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.98; }
+  75% { opacity: 0.97; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes glitch-1 {
+  0%, 100% { clip-path: inset(0 0 95% 0); transform: translateX(0); }
+  20% { clip-path: inset(20% 0 60% 0); transform: translateX(-4px); }
+  40% { clip-path: inset(50% 0 30% 0); transform: translateX(4px); }
+  60% { clip-path: inset(70% 0 10% 0); transform: translateX(-2px); }
+  80% { clip-path: inset(10% 0 80% 0); transform: translateX(2px); }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { clip-path: inset(95% 0 0 0); transform: translateX(0); }
+  25% { clip-path: inset(60% 0 20% 0); transform: translateX(3px); }
+  50% { clip-path: inset(30% 0 50% 0); transform: translateX(-3px); }
+  75% { clip-path: inset(80% 0 5% 0); transform: translateX(2px); }
+}
+
+@keyframes noise {
+  0%, 100% { background-position: 0 0; }
+  10% { background-position: -5% -10%; }
+  30% { background-position: 3% 5%; }
+  50% { background-position: -3% -5%; }
+  70% { background-position: 5% 10%; }
+  90% { background-position: -2% 8%; }
+}
+
+.crt-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15) 0px,
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  animation: flicker 8s infinite;
+}
+
+.crt-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 50%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+}
+
+.crt-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(0, 255, 65, 0.03);
+  animation: scanline 6s linear infinite;
+}
+
+.phosphor-glow {
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.6), 0 0 20px rgba(0, 255, 65, 0.3);
+}
+
+.amber-glow {
+  text-shadow: 0 0 8px rgba(255, 176, 0, 0.6), 0 0 20px rgba(255, 176, 0, 0.3);
+}
+
+.window-glass {
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 255, 65, 0.12);
+  box-shadow:
+    0 0 1px rgba(0, 255, 65, 0.3),
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.vhs-tracking {
+  animation: glitch-1 0.3s linear;
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+.retro-input {
+  background: rgba(0, 255, 65, 0.05);
+  border: 1px solid rgba(0, 255, 65, 0.2);
+  color: #00ff41;
+  font-family: var(--font-mono);
+  padding: 8px 12px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.retro-input:focus {
+  border-color: rgba(0, 255, 65, 0.5);
+  box-shadow: 0 0 12px rgba(0, 255, 65, 0.15);
+}
+
+.retro-input::placeholder {
+  color: rgba(0, 255, 65, 0.3);
+}
+
+.retro-button {
+  background: rgba(0, 255, 65, 0.1);
+  border: 1px solid rgba(0, 255, 65, 0.3);
+  color: #00ff41;
+  font-family: var(--font-mono);
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.retro-button:hover {
+  background: rgba(0, 255, 65, 0.2);
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+}
+
+.skill-bar {
+  background: rgba(0, 255, 65, 0.08);
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00ff41, #00cc33);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+  transition: width 1s ease-out;
 }
