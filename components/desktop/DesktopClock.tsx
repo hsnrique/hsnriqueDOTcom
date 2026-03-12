@@ -24,13 +24,15 @@ export default function DesktopClock() {
   });
 
   return (
-    <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center gap-1 pointer-events-none select-none">
-      <span className="text-6xl font-bold tracking-wider text-[var(--phosphor)] drop-shadow-[0_0_20px_rgba(0,255,65,0.5)]"
+    <div className="shrink-0 flex flex-col items-center pt-6 md:pt-6 pb-2 pointer-events-none select-none">
+      <span
+        className="text-7xl md:text-6xl font-bold tracking-wider text-[var(--phosphor)] drop-shadow-[0_0_20px_rgba(0,255,65,0.5)]"
         style={{ fontFamily: "var(--font-mono)", textShadow: "0 0 30px rgba(0,255,65,0.4), 0 0 60px rgba(0,255,65,0.15)" }}
       >
         {hours}:{minutes}
       </span>
-      <span className="text-sm tracking-widest uppercase text-[var(--phosphor)] opacity-60"
+      <span
+        className="text-xs md:text-sm tracking-widest uppercase text-[var(--phosphor)] opacity-60 mt-1"
         style={{ fontFamily: "var(--font-retro)" }}
       >
         {dateStr}

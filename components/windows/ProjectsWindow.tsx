@@ -41,7 +41,7 @@ function ProjectCard({ project, onNavigate }: { project: Project; onNavigate: (u
     <div
       ref={cardRef}
       onClick={() => onNavigate(project.url)}
-      className="p-4 rounded-lg bg-[rgba(0,255,65,0.03)] border border-[rgba(0,255,65,0.08)] hover:border-[rgba(0,255,65,0.2)] transition-colors cursor-pointer group"
+      className="p-3 md:p-4 rounded-lg bg-[rgba(0,255,65,0.03)] border border-[rgba(0,255,65,0.08)] hover:border-[rgba(0,255,65,0.2)] active:border-[rgba(0,255,65,0.2)] transition-colors cursor-pointer group"
       style={{ perspective: "800px", transformStyle: "preserve-3d" }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -75,7 +75,7 @@ function BlockedFallback({ url }: { url: string }) {
 
   return (
     <div className="h-full flex items-center justify-center p-8">
-      <div className="max-w-sm w-full space-y-6 text-center">
+      <div className="max-w-sm w-full space-y-4 md:space-y-6 text-center">
         <div className="mx-auto w-14 h-14 rounded-2xl bg-[rgba(255,176,0,0.08)] border border-[rgba(255,176,0,0.15)] flex items-center justify-center">
           <ShieldAlert size={24} className="text-[#ffb000]" />
         </div>
@@ -199,7 +199,7 @@ export default function ProjectsWindow() {
           </button>
         )}
 
-        <div className="flex-1 flex items-center gap-2 px-3 py-1.5 rounded-md bg-[rgba(0,0,0,0.4)] border border-[rgba(0,255,65,0.1)]">
+        <div className="flex-1 flex items-center gap-1.5 md:gap-2 px-2 md:px-3 py-1.5 rounded-md bg-[rgba(0,0,0,0.4)] border border-[rgba(0,255,65,0.1)] min-w-0">
           {loading && currentUrl ? (
             <Loader2 size={10} className="text-[#00ff41] animate-spin shrink-0" />
           ) : blocked ? (
@@ -207,7 +207,7 @@ export default function ProjectsWindow() {
           ) : (
             <Globe size={10} className="text-[rgba(0,255,65,0.4)] shrink-0" />
           )}
-          <span className="text-[11px] font-mono text-[rgba(255,255,255,0.4)] truncate">
+          <span className="text-[10px] md:text-[11px] font-mono text-[rgba(255,255,255,0.4)] truncate">
             {currentUrl || "henriqueos://projects"}
           </span>
         </div>
@@ -237,7 +237,7 @@ export default function ProjectsWindow() {
             />
           )
         ) : (
-          <div className="h-full overflow-y-auto p-4 custom-scrollbar">
+          <div className="h-full overflow-y-auto p-3 md:p-4 custom-scrollbar">
             <ProjectList onNavigate={handleNavigate} />
           </div>
         )}

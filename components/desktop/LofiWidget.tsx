@@ -58,7 +58,7 @@ export default function LofiWidget() {
   };
 
   return (
-    <div className="fixed bottom-14 right-4 z-20">
+    <div className="shrink-0 flex justify-end px-2 md:px-4 pb-1">
       <div className="absolute w-0 h-0 overflow-hidden pointer-events-none opacity-0">
         <div ref={containerRef} />
       </div>
@@ -66,23 +66,23 @@ export default function LofiWidget() {
       <button
         onClick={toggle}
         disabled={!ready}
-        className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-[rgba(0,0,0,0.6)] border border-[rgba(0,255,65,0.15)] backdrop-blur-sm hover:border-[rgba(0,255,65,0.3)] transition-all disabled:opacity-40"
+        className="flex items-center gap-1.5 md:gap-2 px-2 md:px-3 py-1.5 rounded-md bg-[rgba(0,0,0,0.6)] border border-[rgba(0,255,65,0.15)] backdrop-blur-sm hover:border-[rgba(0,255,65,0.3)] transition-all disabled:opacity-40"
       >
         {playing ? (
           <>
             <Radio size={12} className="text-[#00ff41] animate-pulse" />
-            <span className="text-[10px] font-mono text-[rgba(0,255,65,0.6)] uppercase tracking-wider">
-              lofi — on air
+            <span className="text-[9px] md:text-[10px] font-mono text-[rgba(0,255,65,0.6)] uppercase tracking-wider">
+              <span className="hidden sm:inline">lofi — </span>on air
             </span>
-            <Pause size={11} className="text-[rgba(0,255,65,0.5)] ml-1" />
+            <Pause size={11} className="text-[rgba(0,255,65,0.5)] ml-0.5 md:ml-1" />
           </>
         ) : (
           <>
             <Radio size={12} className="text-[rgba(255,255,255,0.4)]" />
-            <span className="text-[10px] font-mono text-[rgba(255,255,255,0.3)] uppercase tracking-wider">
-              lofi radio
+            <span className="text-[9px] md:text-[10px] font-mono text-[rgba(255,255,255,0.3)] uppercase tracking-wider">
+              <span className="hidden sm:inline">lofi </span>radio
             </span>
-            <Play size={11} className="text-[rgba(255,255,255,0.3)] ml-1" />
+            <Play size={11} className="text-[rgba(255,255,255,0.3)] ml-0.5 md:ml-1" />
           </>
         )}
       </button>

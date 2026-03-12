@@ -53,21 +53,33 @@ export default function Desktop() {
     <div className="fixed inset-0 overflow-hidden">
       <LofiBackground />
       <BackgroundScene />
-      <DesktopClock />
-      <WallStickers />
 
-      <div className="relative z-10 p-6 pt-24 pb-16 pointer-events-none">
-        <div className="grid grid-cols-1 gap-1 w-fit">
-          {DESKTOP_ICONS.map((icon) => (
-            <DesktopIcon
-              key={icon.id}
-              id={icon.id}
-              label={icon.label}
-              icon={icon.icon}
-              onOpen={openWindow}
-              className="pointer-events-auto"
-            />
-          ))}
+      <div className="relative z-[1] flex flex-col h-[100dvh] pointer-events-none">
+        <DesktopClock />
+
+        <div className="flex-1 flex flex-col justify-center md:justify-start items-center md:items-start px-6 md:px-6 md:pt-24">
+          <div className="grid grid-cols-3 md:grid-cols-1 gap-4 md:gap-1 w-fit mx-auto md:mx-0">
+            {DESKTOP_ICONS.map((icon) => (
+              <DesktopIcon
+                key={icon.id}
+                id={icon.id}
+                label={icon.label}
+                icon={icon.icon}
+                onOpen={openWindow}
+                className="pointer-events-auto"
+              />
+            ))}
+          </div>
+        </div>
+
+        <WallStickers />
+        <div className="pointer-events-auto">
+          <LofiWidget />
+          <Taskbar
+            openWindows={openWindows}
+            onFocus={focusWindow}
+            onMinimize={minimizeWindow}
+          />
         </div>
       </div>
 
@@ -91,13 +103,6 @@ export default function Desktop() {
           </Window>
         );
       })}
-
-      <LofiWidget />
-      <Taskbar
-        openWindows={openWindows}
-        onFocus={focusWindow}
-        onMinimize={minimizeWindow}
-      />
     </div>
   );
 }

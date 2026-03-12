@@ -80,7 +80,7 @@ export default function SkillsWindow() {
 
   return (
     <div
-      className="h-full bg-[rgba(0,0,0,0.5)] rounded p-3 font-mono text-xs"
+      className="h-full bg-[rgba(0,0,0,0.5)] rounded p-2 md:p-3 font-mono text-[10px] md:text-xs"
       onClick={() => inputRef.current?.focus()}
     >
       <div className="space-y-0.5 max-h-[calc(100%-28px)] overflow-y-auto">
@@ -113,7 +113,7 @@ export default function SkillsWindow() {
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="flex-1 bg-transparent text-[#00ff41] outline-none text-xs font-mono ml-1 caret-[#00ff41]"
+            className="flex-1 bg-transparent text-[#00ff41] outline-none text-[10px] md:text-xs font-mono ml-1 caret-[#00ff41]"
             autoFocus
           />
           <span className="w-2 h-3.5 bg-[#00ff41] cursor-blink ml-0.5" />

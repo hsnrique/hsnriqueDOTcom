@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect, useCallback, useState } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { Minus, Square, X } from "lucide-react";
@@ -34,18 +34,27 @@ export default function Window({
 }: WindowProps) {
   const windowRef = useRef<HTMLDivElement>(null);
   const dragRef = useRef({ dragging: false, startX: 0, startY: 0, origX: 0, origY: 0 });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   useEffect(() => {
     if (windowRef.current && state.isOpen && !state.isMinimized) {
       gsap.fromTo(
         windowRef.current,
-        { scale: 0.8, opacity: 0, filter: "blur(8px)" },
+        { scale: isMobile ? 0.95 : 0.8, opacity: 0, filter: "blur(8px)" },
         { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.35, ease: "back.out(1.4)" }
       );
     }
-  }, [state.isOpen, state.isMinimized]);
+  }, [state.isOpen, state.isMinimized, isMobile]);
 
   const handlePointerDown = useCallback((e: React.PointerEvent) => {
+    if (isMobile) return;
     if ((e.target as HTMLElement).closest("button")) return;
     e.preventDefault();
     onFocus(state.id);
@@ -57,14 +66,12 @@ export default function Window({
       origY: state.position.y,
     };
     (e.target as HTMLElement).setPointerCapture(e.pointerId);
-  }, [state.id, state.position.x, state.position.y, onFocus]);
+  }, [isMobile, state.id, state.position.x, state.position.y, onFocus]);
 
   const handlePointerMove = useCallback((e: React.PointerEvent) => {
     if (!dragRef.current.dragging) return;
     const { startX, startY, origX, origY } = dragRef.current;
-    const newX = origX + (e.clientX - startX);
-    const newY = origY + (e.clientY - startY);
-    onUpdatePosition(state.id, { x: newX, y: newY });
+    onUpdatePosition(state.id, { x: origX + (e.clientX - startX), y: origY + (e.clientY - startY) });
   }, [state.id, onUpdatePosition]);
 
   const handlePointerUp = useCallback(() => {
@@ -73,7 +80,41 @@ export default function Window({
 
   if (!state.isOpen || state.isMinimized) return null;
 
-  const isMax = state.isMaximized;
+  const isMax = state.isMaximized || isMobile;
+
+  if (isMobile) {
+    return (
+      <div
+        ref={windowRef}
+        className="fixed inset-0 flex flex-col window-glass"
+        style={{ zIndex: state.zIndex + 100 }}
+      >
+        <div className="flex items-center justify-between px-3 h-11 bg-[rgba(0,255,65,0.06)] border-b border-[rgba(0,255,65,0.1)] shrink-0"
+          style={{ paddingTop: "env(safe-area-inset-top)" }}
+        >
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-[#00ff41] opacity-60" />
+            <span className="text-[11px] font-mono text-[rgba(0,255,65,0.7)] tracking-wider uppercase">
+              {title}
+            </span>
+          </div>
+          <button
+            onClick={(e) => { e.stopPropagation(); onClose(state.id); }}
+            className="w-8 h-8 flex items-center justify-center rounded-full bg-[rgba(255,0,0,0.1)] border border-[rgba(255,0,0,0.2)] active:bg-[rgba(255,0,0,0.3)] transition-colors"
+          >
+            <X size={14} className="text-[rgba(255,100,100,0.8)]" />
+          </button>
+        </div>
+
+        <div
+          className="flex-1 overflow-y-auto p-3 custom-scrollbar"
+          style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 48px)" }}
+        >
+          {children}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <motion.div

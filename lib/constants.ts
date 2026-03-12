@@ -170,7 +170,7 @@ export const BOOT_LINES = [
   "Detecting drives...",
   "  /dev/sda1 — Projects (10 found)",
   "  /dev/sda2 — Skills (6 categories)",
-  "  /dev/sda3 — Experience (4 entries)",
+  "  /dev/sda3 — Experience (5 entries)",
   "",
   "Loading kernel modules...",
   "  [OK] gsap.ko",

@@ -37,7 +37,7 @@ export default function WallStickers() {
   if (!stickers.length) return null;
 
   return (
-    <div className="fixed inset-0 z-[1] pointer-events-none overflow-hidden" aria-hidden="true">
+    <div className="fixed inset-0 z-[1] pointer-events-none overflow-hidden hidden md:block" aria-hidden="true">
       {stickers.map((s, i) => (
         <span
           key={i}

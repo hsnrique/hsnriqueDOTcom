@@ -28,7 +28,7 @@ export default function AboutWindow() {
   }, []);
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-4 md:space-y-5">
       <div className="flex items-start gap-4">
         <div className="w-16 h-16 rounded-lg bg-[rgba(0,255,65,0.08)] border border-[rgba(0,255,65,0.15)] flex items-center justify-center overflow-hidden shrink-0 relative">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(0,255,65,0.03)] to-transparent animate-pulse" />
@@ -57,7 +57,7 @@ export default function AboutWindow() {
         {PROFILE.bio}
       </p>
 
-      <div ref={statsRef} className="grid grid-cols-3 gap-3">
+      <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3">
         {PROFILE.stats.map((stat) => (
           <div
             key={stat.label}
