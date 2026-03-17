@@ -49,9 +49,14 @@ MIT — fork it, break it, make it yours.
 
 ---
 
-<p align="center">
-  <a href="https://buymeacoffee.com/hsnrique"><img src="https://img.shields.io/badge/buy_me_a_coffee-☕-ffdd00?style=flat-square" alt="Buy Me a Coffee" /></a>
-</p>
+## Support
+
+If you find this project useful, consider supporting the project:
+
+| | Link |
+|---|---|
+| ☕ **Buy Me a Coffee** (US/EU) | [buymeacoffee.com/hsnrique](https://buymeacoffee.com/hsnrique) |
+| 💜 **Pix** (BR) | [livepix.gg/hsnrique](https://livepix.gg/hsnrique) |
 
 <p align="center">
   <sub>built with 🖤 by <a href="https://github.com/hsnrique">@hsnrique</a></sub>
