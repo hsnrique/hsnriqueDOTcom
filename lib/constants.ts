@@ -9,9 +9,9 @@ export const PROFILE = {
     author: "Alan Kay",
   },
   stats: [
-    { label: "App Store Apps", value: "4" },
+    { label: "App Store Apps", value: "2" },
     { label: "Active Ventures", value: "3" },
-    { label: "Open Source", value: "2" },
+    { label: "Open Source", value: "1" },
   ],
   socials: [
     { name: "Instagram", url: "https://instagram.com/hsnriquemartins", icon: "instagram" },
@@ -38,31 +38,10 @@ export const PROJECTS: Project[] = [
     category: "saas",
   },
   {
-    name: "neiro",
-    description: "AI Deep Research Engine",
-    url: "https://neiro.it",
-    stack: ["AI/ML", "Next.js", "Node", "TypeScript", "Neon"],
-    category: "saas",
-  },
-  {
     name: "lirk",
     description: "The Creator Network",
     url: "https://lirk.io",
     stack: ["AI", "Vite", "Node.js", "TypeScript", "Neon"],
-    category: "saas",
-  },
-  {
-    name: "seoptimize",
-    description: "AI-Powered SEO Analysis Tool",
-    url: "https://seoptimize.io",
-    stack: ["AI", "Next.js", "GSAP", "TypeScript", "Neon"],
-    category: "saas",
-  },
-  {
-    name: "nxen",
-    description: "Ultra Resolution AI Image Editor",
-    url: "https://nxen.io",
-    stack: ["AI", "Vite", "Canvas", "WebGL", "TypeScript", "Supabase"],
     category: "saas",
   },
   {
@@ -71,20 +50,6 @@ export const PROJECTS: Project[] = [
     url: "https://oura.dev",
     stack: ["AI", "Electron", "Node", "TypeScript", "React"],
     category: "opensource",
-  },
-  {
-    name: "opencrab",
-    description: "Personal AI assistant built in Rust",
-    url: "https://github.com/hsnrique/OpenCrab",
-    stack: ["AI", "Rust", "Systems"],
-    category: "opensource",
-  },
-  {
-    name: "imagen",
-    description: "AI Image Generator",
-    url: "https://apps.apple.com/us/app/imagen-ai-image-generator/id6739819365",
-    stack: ["AI", "React Native", "Node", "TypeScript"],
-    category: "apps",
   },
   {
     name: "firstmed",
@@ -98,13 +63,6 @@ export const PROJECTS: Project[] = [
     description: "AI Poem Generator",
     url: "https://apps.apple.com/us/app/haiku-ai-poem-generator/id6742144558",
     stack: ["AI", "Swift", "SwiftUI"],
-    category: "apps",
-  },
-  {
-    name: "wordee",
-    description: "Word Search Puzzles",
-    url: "https://apps.apple.com/us/app/wordee-word-search-puzzles/id6742909193",
-    stack: ["React Native", "Node", "TypeScript"],
     category: "apps",
   },
 ];
@@ -189,7 +147,7 @@ export const BOOT_LINES = [
   "GPU: RTX 5090 Founders Edition",
   "",
   "Detecting drives...",
-  "  /dev/sda1 — Projects (11 found)",
+  "  /dev/sda1 — Projects (5 found)",
   "  /dev/sda2 — Skills (6 categories)",
   "  /dev/sda3 — Experience (7 entries)",
   "",
