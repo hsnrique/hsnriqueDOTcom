@@ -1,10 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 // ponytail: static-site honeypot — pure theater, nothing is logged anywhere
 const MAX_ATTEMPTS = 3;
+
+const PHP_ROAST = [
+  "> request analyzed: PHP exploit probe",
+  "> ...",
+  "> plse man. you think i use PHP?",
+  "> i'm modern. this is Next.js. statically rendered.",
+  "> there is no wp-login. there is no phpmyadmin. there are no elephants here.",
+  "> your exploit kit is older than my oldest commit.",
+  "> tell your botnet i said hi o/",
+];
 
 const TRACE_LINES = [
   "> ACCESS DENIED — incident logged",
@@ -19,6 +30,12 @@ export default function HoneypotTerminal() {
   const router = useRouter();
   const [attempts, setAttempts] = useState(0);
   const [value, setValue] = useState("");
+  // rewrites keep the probed URL in the address bar, so the path is only known client-side
+  const phpProbe = useSyncExternalStore(
+    () => () => {},
+    () => /php/i.test(window.location.pathname),
+    () => false
+  );
   const busted = attempts >= MAX_ATTEMPTS;
 
   const submit = (e: React.FormEvent) => {
@@ -40,7 +57,16 @@ export default function HoneypotTerminal() {
 └────────────────────────────────┘`}
         </pre>
 
-        {busted ? (
+        {phpProbe ? (
+          <div className="mt-4 space-y-1 text-xs">
+            {PHP_ROAST.map((line) => (
+              <p key={line} className={line.includes("probe") ? "text-[#ff3c3c]" : ""}>{line}</p>
+            ))}
+            <p className="mt-3">
+              <Link href="/" className="underline text-[rgba(0,255,65,0.8)]">← back to the actual stack</Link>
+            </p>
+          </div>
+        ) : busted ? (
           <div className="mt-4 space-y-1 text-xs">
             {TRACE_LINES.map((line) => (
               <p key={line} className={line.includes("DENIED") ? "text-[#ff3c3c]" : ""}>{line}</p>
