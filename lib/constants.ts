@@ -1,16 +1,16 @@
 export const PROFILE = {
   name: "Henrique Martins",
   handle: "@henrique",
-  title: "Founder at Arch | Senior Full Stack Engineer | AI Specialist",
+  title: "Founder at dhrive | Senior iOS Engineer | AI Products",
   location: "Brazil",
-  bio: "AI Specialist & Senior Full Stack Engineer specialized in building AI-powered solutions, web and mobile apps, with a focus on innovation, scalability, and future-forward vision.",
+  bio: "Senior iOS engineer with a track record of building and shipping AI-powered products end-to-end, from architecture to production.",
   quote: {
     text: "The best way to predict the future is to invent it.",
     author: "Alan Kay",
   },
   stats: [
     { label: "App Store Apps", value: "4" },
-    { label: "Active Ventures", value: "4" },
+    { label: "Active Ventures", value: "3" },
     { label: "Open Source", value: "2" },
   ],
   socials: [
@@ -30,6 +30,13 @@ export interface Project {
 }
 
 export const PROJECTS: Project[] = [
+  {
+    name: "dhrive",
+    description: "Turns a prompt into a real native iOS app",
+    url: "https://dhrive.app",
+    stack: ["AI", "Swift", "SwiftUI", "Next.js", "TypeScript"],
+    category: "saas",
+  },
   {
     name: "neiro",
     description: "AI Deep Research Engine",
@@ -108,12 +115,12 @@ export interface SkillCategory {
 }
 
 export const SKILLS: SkillCategory[] = [
-  { name: "Languages", items: ["Swift", "Rust", "TypeScript", "Python", "Kotlin", "Dart"] },
-  { name: "Frontend", items: ["React", "Next.js", "SwiftUI", "Flutter", "Three.js", "GSAP"] },
-  { name: "Backend", items: ["Node.js", "Python", "Rust"] },
-  { name: "Mobile", items: ["iOS (Swift)", "Android (Kotlin)", "Flutter", "React Native"] },
-  { name: "AI/ML", items: ["LLM Integration", "Computer Vision", "NLP", "RAG"] },
-  { name: "Infra", items: ["Vercel", "Render", "Supabase", "Neon", "PostgreSQL"] },
+  { name: "Languages", items: ["Swift", "Rust", "TypeScript", "Dart"] },
+  { name: "Mobile", items: ["iOS (SwiftUI)", "Flutter", "React Native"] },
+  { name: "Frontend", items: ["React", "Next.js", "Tauri", "Three.js", "GSAP"] },
+  { name: "Backend", items: ["Node.js", "Express", "Rust"] },
+  { name: "AI/ML", items: ["LLM Integration", "Agents", "RAG", "Computer Vision"] },
+  { name: "Cloud & Infra", items: ["Supabase", "Neon", "Firebase", "Cloudflare", "Vercel", "Render"] },
 ];
 
 export interface ExperienceEntry {
@@ -126,35 +133,49 @@ export interface ExperienceEntry {
 
 export const EXPERIENCE: ExperienceEntry[] = [
   {
-    timestamp: "2025 — PRESENT",
+    timestamp: "2026 — PRESENT",
     role: "Founder",
+    company: "dhrive",
+    description: "dhrive turns a prompt into a real native iOS app.",
+    current: true,
+  },
+  {
+    timestamp: "2025 — PRESENT",
+    role: "Co-Founder",
     company: "The Arch Company - (Global)",
-    description: "Arch is an innovation-driven holding company specializing in the convergence of high-end audiovisual production and advanced software development. As a venture builder, we architect and scale products that leverage AI, cinematic storytelling, and human-centric design.",
+    description: "Co-founded and lead The Arch, an AI studio building and shipping production-grade AI products.",
+    current: true,
+  },
+  {
+    timestamp: "2023 — PRESENT",
+    role: "Founder",
+    company: "Cyos Technologies - (Brazil)",
+    description: "Founded and lead Cyos Technologies, a software consultancy specialized in end-to-end product development and AI integration.",
     current: true,
   },
   {
     timestamp: "2024 — 2026",
-    role: "Senior Mobile Developer",
+    role: "Senior iOS Engineer",
     company: "Going Merry LLC - (United States, Remote)",
-    description: "App Development with extensive experience as part of the core team behind 60+ apps successfully published on the App Store.",
+    description: "Built and maintained full stack AI-powered iOS apps as part of the core team behind 60+ apps published on the App Store.",
   },
   {
     timestamp: "2023 — 2024",
-    role: "Lead Front End Developer",
+    role: "Software Engineer",
     company: "Onedev - (Remote)",
-    description: "I led the development and maintenance of front-end components for internal applications while actively contributing to the overall project development.",
+    description: "Led the full-stack development team while actively contributing to the overall project development.",
   },
   {
-    timestamp: "2020 — 2024",
-    role: "Founder & Mobile Developer",
-    company: "hm/labs - (Brazil)",
-    description: "Mobile developer focused on developing high-performance mobile applications for iOS and Android. My responsibilities include ensuring seamless user experiences and contributing to the company's technical direction.",
+    timestamp: "2020 — 2023",
+    role: "Software Engineer",
+    company: "SpacedSoft - (Brazil)",
+    description: "Operated a software development company delivering full-stack solutions.",
   },
   {
     timestamp: "2018 — 2020",
-    role: "Freelance Mobile Developer",
+    role: "Freelance Software Engineer",
     company: "Independent",
-    description: "Freelance developer, providing tailored web and mobile solutions for small businesses and entrepreneurs. I was responsible for the creation of websites and applications, adapting to each project's needs to deliver functional and valuable products.",
+    description: "Contracted by small businesses and entrepreneurs to design and ship full-stack web and mobile products.",
   },
 ];
 
@@ -168,9 +189,9 @@ export const BOOT_LINES = [
   "GPU: RTX 5090 Founders Edition",
   "",
   "Detecting drives...",
-  "  /dev/sda1 — Projects (10 found)",
+  "  /dev/sda1 — Projects (11 found)",
   "  /dev/sda2 — Skills (6 categories)",
-  "  /dev/sda3 — Experience (5 entries)",
+  "  /dev/sda3 — Experience (7 entries)",
   "",
   "Loading kernel modules...",
   "  [OK] gsap.ko",
