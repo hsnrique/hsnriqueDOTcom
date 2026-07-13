@@ -8,13 +8,13 @@ import { useRouter } from "next/navigation";
 const MAX_ATTEMPTS = 3;
 
 const PHP_ROAST = [
-  "> request analyzed: PHP exploit probe",
+  "> request analyzed: looking for PHP?",
   "> ...",
-  "> plse man. you think i use PHP?",
-  "> i'm modern. this is Next.js. statically rendered.",
-  "> there is no wp-login. there is no phpmyadmin. there are no elephants here.",
-  "> your exploit kit is older than my oldest commit.",
-  "> tell your botnet i said hi o/",
+  "> sorry friend, no PHP here — nothing personal",
+  "> it's just a little static Next.js site. no database, no wp-login, no secrets.",
+  "> honestly there's nothing to hack. i barely got the CSS working.",
+  "> the only thing you can take from here is design inspiration.",
+  "> good luck out there o/",
 ];
 
 const TRACE_LINES = [
@@ -60,7 +60,7 @@ export default function HoneypotTerminal() {
         {phpProbe ? (
           <div className="mt-4 space-y-1 text-xs">
             {PHP_ROAST.map((line) => (
-              <p key={line} className={line.includes("probe") ? "text-[#ff3c3c]" : ""}>{line}</p>
+              <p key={line} className={line.includes("analyzed") ? "text-[#ff3c3c]" : ""}>{line}</p>
             ))}
             <p className="mt-3">
               <Link href="/" className="underline text-[rgba(0,255,65,0.8)]">← back to the actual stack</Link>
