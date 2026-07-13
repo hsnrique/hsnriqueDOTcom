@@ -8,6 +8,7 @@ import Taskbar from "./Taskbar";
 import DesktopClock from "./DesktopClock";
 import LofiWidget from "./LofiWidget";
 import WallStickers from "./WallStickers";
+import SecurityDaemon from "./SecurityDaemon";
 import LofiBackground from "./LofiBackground";
 import Window from "./Window";
 import AboutWindow from "@/components/windows/AboutWindow";
@@ -51,6 +52,7 @@ export default function Desktop() {
 
   return (
     <div className="fixed inset-0 overflow-hidden">
+      <SecurityDaemon />
       <LofiBackground />
       <BackgroundScene />
 
