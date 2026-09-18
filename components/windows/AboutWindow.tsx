@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { Instagram, Linkedin, Youtube, Github, MapPin, Quote, type LucideIcon } from "lucide-react";
-import { PROFILE } from "@/lib/constants";
+import { PROFILE, STATS } from "@/lib/constants";
 
 const SOCIAL_ICONS: Record<string, LucideIcon> = {
   instagram: Instagram,
@@ -61,7 +61,7 @@ export default function AboutWindow() {
       </p>
 
       <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3">
-        {PROFILE.stats.map((stat) => (
+        {STATS.map((stat) => (
           <div
             key={stat.label}
             className="text-center p-3 rounded-lg bg-[rgba(0,255,65,0.04)] border border-[rgba(0,255,65,0.08)]"

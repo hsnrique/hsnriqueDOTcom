@@ -9,11 +9,6 @@ export const PROFILE = {
     text: "The best way to predict the future is to invent it.",
     author: "Alan Kay",
   },
-  stats: [
-    { label: "Years Shipping", value: "8+" },
-    { label: "App Store Apps", value: "5" },
-    { label: "Open Source", value: "1" },
-  ],
   socials: [
     { name: "LinkedIn", url: "https://www.linkedin.com/in/hsnrique/", icon: "linkedin" },
     { name: "GitHub", url: "https://github.com/hsnrique", icon: "github" },
@@ -80,6 +75,14 @@ export const PROJECTS: Project[] = [
     category: "opensource",
     icon: "/projects/skynt.png",
   },
+];
+
+const OPEN_SOURCE_COUNT = PROJECTS.filter((p) => p.category === "opensource").length;
+
+export const STATS = [
+  { label: "Years Shipping", value: "8+" },
+  { label: "Live Products", value: String(PROJECTS.length - OPEN_SOURCE_COUNT) },
+  { label: "Open Source", value: String(OPEN_SOURCE_COUNT) },
 ];
 
 export interface SkillCategory {
