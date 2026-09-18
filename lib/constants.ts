@@ -33,6 +33,14 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
+    name: "planilha",
+    description: "Personal finance dashboard: spending, budget, investments and net worth",
+    url: "https://planilha.finance",
+    stack: ["Next.js", "Stripe"],
+    category: "saas",
+    icon: "/projects/planilha.png",
+  },
+  {
     name: "leadmire",
     description: "WhatsApp marketing automation on Meta's official API",
     url: "https://leadmire.com",
