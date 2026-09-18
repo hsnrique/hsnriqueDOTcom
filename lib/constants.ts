@@ -1,23 +1,24 @@
 export const PROFILE = {
   name: "Henrique Martins",
   handle: "@henrique",
-  title: "Founder at dhrive | Senior iOS Engineer | AI Products",
+  title: "Senior Product Engineer | Web, Mobile & AI",
   location: "Brazil",
-  bio: "Senior iOS engineer with a track record of building and shipping AI-powered products end-to-end, from architecture to production.",
+  availability: "Open to relocate · Eligible for visa sponsorship",
+  bio: "Senior product engineer with 8+ years building web, mobile, and AI products. Strong in TypeScript, product execution, and shipping reliable software.",
   quote: {
     text: "The best way to predict the future is to invent it.",
     author: "Alan Kay",
   },
   stats: [
+    { label: "Years Shipping", value: "8+" },
     { label: "App Store Apps", value: "5" },
-    { label: "Active Ventures", value: "3" },
     { label: "Open Source", value: "1" },
   ],
   socials: [
-    { name: "Instagram", url: "https://instagram.com/hsnriquemartins", icon: "instagram" },
     { name: "LinkedIn", url: "https://www.linkedin.com/in/hsnrique/", icon: "linkedin" },
-    { name: "YouTube", url: "https://youtube.com/@hsnrique", icon: "youtube" },
     { name: "GitHub", url: "https://github.com/hsnrique", icon: "github" },
+    { name: "Instagram", url: "https://instagram.com/hsnriquemartins", icon: "instagram" },
+    { name: "YouTube", url: "https://youtube.com/@hsnrique", icon: "youtube" },
   ],
 } as const;
 
@@ -94,12 +95,17 @@ export interface SkillCategory {
 }
 
 export const SKILLS: SkillCategory[] = [
-  { name: "Languages", items: ["Swift", "Rust", "TypeScript", "Dart"] },
-  { name: "Mobile", items: ["iOS (SwiftUI)", "Flutter", "React Native"] },
-  { name: "Frontend", items: ["React", "Next.js", "Tauri", "Three.js", "GSAP"] },
-  { name: "Backend", items: ["Node.js", "Express", "Rust"] },
-  { name: "AI/ML", items: ["LLM Integration", "Agents", "RAG", "Computer Vision"] },
-  { name: "Cloud & Infra", items: ["Supabase", "Neon", "Firebase", "Cloudflare", "Vercel", "Render"] },
+  {
+    name: "Product & AI",
+    items: ["AI Product Development", "LLM Integration", "Agent Workflows", "Structured Outputs", "Model Evaluation"],
+  },
+  { name: "Engineering", items: ["TypeScript", "Node.js", "React", "Swift", "SwiftUI", "Rust"] },
+  {
+    name: "Systems",
+    items: ["APIs", "Backend Services", "Databases", "Cloudflare", "Supabase", "Neon", "Firebase", "Vercel"],
+  },
+  { name: "Workflow", items: ["Git", "Claude Code", "Codex", "Cursor"] },
+  { name: "Languages", items: ["Portuguese", "English"] },
 ];
 
 export interface ExperienceEntry {
@@ -112,49 +118,35 @@ export interface ExperienceEntry {
 
 export const EXPERIENCE: ExperienceEntry[] = [
   {
-    timestamp: "2026 — PRESENT",
-    role: "Founder",
-    company: "dhrive",
-    description: "dhrive turns a prompt into a real native iOS app.",
-    current: true,
-  },
-  {
-    timestamp: "2025 — PRESENT",
-    role: "Co-Founder",
-    company: "The Arch Company - (Global)",
-    description: "Co-founded and lead The Arch, an AI studio building and shipping production-grade AI products.",
-    current: true,
-  },
-  {
-    timestamp: "2023 — PRESENT",
+    timestamp: "NOV 2023 — PRESENT",
     role: "Founder",
     company: "Cyos Technologies - (Brazil)",
-    description: "Founded and lead Cyos Technologies, a software consultancy specialized in end-to-end product development and AI integration.",
+    description: "Built and shipped AI-powered products from idea to production, owning product, architecture, and delivery.",
     current: true,
   },
   {
-    timestamp: "2024 — 2026",
+    timestamp: "SEP 2024 — APR 2026",
     role: "Senior iOS Engineer",
-    company: "Going Merry LLC - (United States, Remote)",
-    description: "Built and maintained full stack AI-powered iOS apps as part of the core team behind 60+ apps published on the App Store.",
+    company: "Going Merry - (United States, Remote)",
+    description: "Built AI-powered iOS products across app and backend, shipped production features and improved reliability.",
   },
   {
-    timestamp: "2023 — 2024",
+    timestamp: "FEB 2023 — SEP 2024",
     role: "Software Engineer",
     company: "Onedev - (Remote)",
-    description: "Led the full-stack development team while actively contributing to the overall project development.",
+    description: "Led full-stack delivery and technical decisions.",
   },
   {
-    timestamp: "2020 — 2023",
+    timestamp: "FEB 2020 — FEB 2023",
     role: "Software Engineer",
     company: "SpacedSoft - (Brazil)",
     description: "Operated a software development company delivering full-stack solutions.",
   },
   {
-    timestamp: "2018 — 2020",
-    role: "Freelance Software Engineer",
-    company: "Independent",
-    description: "Contracted by small businesses and entrepreneurs to design and ship full-stack web and mobile products.",
+    timestamp: "OCT 2018 — FEB 2020",
+    role: "Software Engineer",
+    company: "Freelancer",
+    description: "Designed and shipped full-stack web and mobile products for small businesses.",
   },
 ];
 
@@ -168,9 +160,9 @@ export const BOOT_LINES = [
   "GPU: RTX 5090 Founders Edition",
   "",
   "Detecting drives...",
-  "  /dev/sda1 — Projects (8 found)",
-  "  /dev/sda2 — Skills (6 categories)",
-  "  /dev/sda3 — Experience (7 entries)",
+  `  /dev/sda1 — Projects (${PROJECTS.length} found)`,
+  `  /dev/sda2 — Skills (${SKILLS.length} categories)`,
+  `  /dev/sda3 — Experience (${EXPERIENCE.length} entries)`,
   "",
   "Loading kernel modules...",
   "  [OK] gsap.ko",

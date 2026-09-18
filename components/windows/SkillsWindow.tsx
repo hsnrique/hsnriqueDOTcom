@@ -2,20 +2,22 @@
 
 import { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
-import { SKILLS } from "@/lib/constants";
+import { PROJECTS, SKILLS } from "@/lib/constants";
+
+const SKILL_COUNT = SKILLS.reduce((sum, cat) => sum + cat.items.length, 0);
 
 const EASTER_EGGS: Record<string, string> = {
-  whoami: "henrique — tech entrepreneur & senior engineer",
-  "ls projects": "neiro/  lirk/  nxen/  oura-browser/  opencrab/",
-  "cat skills.json": JSON.stringify({ total: 30, categories: 6, level: "senior" }, null, 2),
+  whoami: "henrique — senior product engineer · web, mobile & AI",
+  "ls projects": PROJECTS.map((p) => `${p.name.replace(/ /g, "-")}/`).join("  "),
+  "cat skills.json": JSON.stringify({ total: SKILL_COUNT, categories: SKILLS.length, level: "senior" }, null, 2),
   help: "Available: whoami, ls projects, cat skills.json, clear, neofetch",
   neofetch: `
   ╔═══════════════════════════╗
   ║     HenriqueOS v2.026     ║
   ║  Kernel: creativity-6.0   ║
   ║  Shell: imagination/zsh   ║
-  ║  Uptime: since 2019       ║
-  ║  Packages: 60+ (appstore) ║
+  ║  Uptime: since 2018       ║
+  ║  Packages: TS/Swift/Rust  ║
   ║  CPU: Neural Engine x86   ║
   ╚═══════════════════════════╝`,
 };
@@ -35,7 +37,7 @@ export default function SkillsWindow() {
     let delay = 0;
 
     SKILLS.forEach((cat) => {
-      entries.push({ type: "input", text: `cat /sys/${cat.name.toLowerCase()}.conf` });
+      entries.push({ type: "input", text: `cat /sys/${cat.name.toLowerCase().replace(/[^a-z]+/g, "-")}.conf` });
       entries.push({ type: "output", text: `[${cat.name.toUpperCase()}]` });
       cat.items.forEach((item) => {
         entries.push({ type: "output", text: `  ▸ ${item}` });

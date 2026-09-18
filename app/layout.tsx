@@ -21,10 +21,10 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "HenriqueOS — Senior iOS Engineer",
-  description: "Founder at dhrive | Senior iOS Engineer — building and shipping AI-powered products end-to-end. An immersive retro OS portfolio.",
+  title: "HenriqueOS — Senior Product Engineer",
+  description: "Senior product engineer with 8+ years building web, mobile, and AI products. An immersive retro OS portfolio.",
   openGraph: {
-    title: "HenriqueOS — Senior iOS Engineer",
+    title: "HenriqueOS — Senior Product Engineer",
     description: "Explore the portfolio of Henrique Martins through an interactive retro operating system.",
     type: "website",
   },

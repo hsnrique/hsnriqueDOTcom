@@ -47,6 +47,9 @@ export default function AboutWindow() {
               {PROFILE.location}
             </span>
           </div>
+          <p className="text-[10px] font-mono text-[rgba(0,255,65,0.6)] mt-1">
+            {PROFILE.availability}
+          </p>
         </div>
       </div>
 
