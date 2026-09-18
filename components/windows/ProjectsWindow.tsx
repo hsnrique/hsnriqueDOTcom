@@ -6,9 +6,9 @@ import { ArrowLeft, Globe, ExternalLink, Loader2, ShieldAlert } from "lucide-rea
 import { PROJECTS, type Project } from "@/lib/constants";
 
 const BLOCKED_DOMAINS = new Set([
-  "neiro.it",
   "github.com",
-  "apps.apple.com",
+  "leadmire.com",
+  "udipost.com.br",
 ]);
 
 function isBlocked(url: string): boolean {
@@ -124,7 +124,7 @@ function BlockedFallback({ url }: { url: string }) {
 function ProjectList({ onNavigate }: { onNavigate: (url: string) => void }) {
   const saasProjects = PROJECTS.filter((p) => p.category === "saas");
   const openSourceProjects = PROJECTS.filter((p) => p.category === "opensource");
-  const appsProjects = PROJECTS.filter((p) => p.category === "apps");
+  const webProjects = PROJECTS.filter((p) => p.category === "web");
 
   return (
     <div className="space-y-5 p-1">
@@ -145,10 +145,10 @@ function ProjectList({ onNavigate }: { onNavigate: (url: string) => void }) {
       <div>
         <div className="flex items-center gap-2 mb-3">
           <div className="w-1.5 h-1.5 rounded-full bg-[#00b4ff]" />
-          <h3 className="text-xs font-mono text-[#00b4ff] uppercase tracking-widest">Apps Army</h3>
+          <h3 className="text-xs font-mono text-[#00b4ff] uppercase tracking-widest">Web Army</h3>
         </div>
         <div className="space-y-2">
-          {appsProjects.map((project) => (
+          {webProjects.map((project) => (
             <ProjectCard key={project.name} project={project} onNavigate={onNavigate} />
           ))}
         </div>

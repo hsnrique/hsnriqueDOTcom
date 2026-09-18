@@ -27,65 +27,44 @@ export interface Project {
   description: string;
   url: string;
   stack: string[];
-  category: "saas" | "opensource" | "apps";
+  category: "saas" | "web" | "opensource";
 }
 
 export const PROJECTS: Project[] = [
   {
-    name: "dhrive",
-    description: "Turns a prompt into a real native iOS app",
-    url: "https://dhrive.app",
-    stack: ["AI", "Swift", "SwiftUI", "Next.js", "TypeScript"],
+    name: "leadmire",
+    description: "WhatsApp marketing automation on Meta's official API",
+    url: "https://leadmire.com",
+    stack: ["Next.js", "Supabase", "WhatsApp API"],
     category: "saas",
   },
   {
-    name: "lirk",
-    description: "The Creator Network",
-    url: "https://lirk.io",
-    stack: ["AI", "Vite", "Node.js", "TypeScript", "Neon"],
+    name: "myspote",
+    description: "Build a page, share the link",
+    url: "https://myspote.com",
+    stack: ["React", "Vite", "Supabase"],
     category: "saas",
   },
   {
-    name: "oura browser",
-    description: "The browser, reimagined with AI",
-    url: "https://oura.dev",
-    stack: ["AI", "Electron", "Node", "TypeScript", "React"],
+    name: "udilabs",
+    description: "Creative studio: brand, film, strategy and apps",
+    url: "https://udilabs.com",
+    stack: ["Next.js", "Vercel"],
+    category: "web",
+  },
+  {
+    name: "udipost",
+    description: "Local news portal",
+    url: "https://udipost.com.br",
+    stack: ["Next.js", "Vercel"],
+    category: "web",
+  },
+  {
+    name: "skynt",
+    description: "Policy gateway for MCP: AI tool calls go through your rules first",
+    url: "https://github.com/hsnrique/skynt",
+    stack: ["AI", "Python", "MCP"],
     category: "opensource",
-  },
-  {
-    name: "firstmed",
-    description: "AI Health Assistant",
-    url: "https://apps.apple.com/us/app/firstmed-ai-health-assistant/id6747414143",
-    stack: ["AI", "React Native", "Rust", "TypeScript"],
-    category: "apps",
-  },
-  {
-    name: "haiku",
-    description: "AI Poem Generator",
-    url: "https://apps.apple.com/us/app/haiku-ai-poem-generator/id6742144558",
-    stack: ["AI", "Swift", "SwiftUI"],
-    category: "apps",
-  },
-  {
-    name: "contra",
-    description: "Steelman & Debate AI",
-    url: "https://apps.apple.com/us/app/contra-steelman-debate-ai/id6742379140",
-    stack: ["AI", "Swift", "SwiftUI"],
-    category: "apps",
-  },
-  {
-    name: "ember",
-    description: "Private AI Journal",
-    url: "https://apps.apple.com/us/app/ember-private-ai-journal/id6769944306",
-    stack: ["AI", "Swift", "SwiftUI"],
-    category: "apps",
-  },
-  {
-    name: "bebes",
-    description: "Baby Name Picker",
-    url: "https://apps.apple.com/us/app/bebes-baby-name-picker/id6773067379",
-    stack: ["Swift", "SwiftUI"],
-    category: "apps",
   },
 ];
 
