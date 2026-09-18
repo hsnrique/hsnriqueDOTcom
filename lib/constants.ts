@@ -28,6 +28,7 @@ export interface Project {
   url: string;
   stack: string[];
   category: "saas" | "web" | "opensource";
+  icon: string;
 }
 
 export const PROJECTS: Project[] = [
@@ -37,6 +38,7 @@ export const PROJECTS: Project[] = [
     url: "https://leadmire.com",
     stack: ["Next.js", "Supabase", "WhatsApp API"],
     category: "saas",
+    icon: "/projects/leadmire.png",
   },
   {
     name: "myspote",
@@ -44,6 +46,7 @@ export const PROJECTS: Project[] = [
     url: "https://myspote.com",
     stack: ["React", "Vite", "Supabase"],
     category: "saas",
+    icon: "/projects/myspote.png",
   },
   {
     name: "udilabs",
@@ -51,6 +54,7 @@ export const PROJECTS: Project[] = [
     url: "https://udilabs.com",
     stack: ["Next.js", "Vercel"],
     category: "web",
+    icon: "/projects/udilabs.png",
   },
   {
     name: "udipost",
@@ -58,6 +62,7 @@ export const PROJECTS: Project[] = [
     url: "https://udipost.com.br",
     stack: ["Next.js", "Vercel"],
     category: "web",
+    icon: "/projects/udipost.png",
   },
   {
     name: "skynt",
@@ -65,6 +70,7 @@ export const PROJECTS: Project[] = [
     url: "https://github.com/hsnrique/skynt",
     stack: ["AI", "Python", "MCP"],
     category: "opensource",
+    icon: "/projects/skynt.png",
   },
 ];
 

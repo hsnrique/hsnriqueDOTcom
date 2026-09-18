@@ -171,21 +171,21 @@ function ProjectList({ onNavigate }: { onNavigate: (url: string) => void }) {
   );
 }
 
-export default function ProjectsWindow() {
-  const [currentUrl, setCurrentUrl] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
+interface ProjectsWindowProps {
+  url: string | null;
+  onNavigate: (url: string | null) => void;
+}
 
-  const handleNavigate = (url: string) => {
-    if (!isBlocked(url)) setLoading(true);
-    setCurrentUrl(url);
-  };
-
-  const handleBack = () => {
-    setCurrentUrl(null);
-    setLoading(false);
-  };
+export default function ProjectsWindow({ url: currentUrl, onNavigate }: ProjectsWindowProps) {
+  const [loadedUrl, setLoadedUrl] = useState<string | null>(null);
 
   const blocked = currentUrl ? isBlocked(currentUrl) : false;
+  const loading = currentUrl !== null && !blocked && loadedUrl !== currentUrl;
+
+  const handleBack = () => {
+    onNavigate(null);
+    setLoadedUrl(null);
+  };
 
   return (
     <div className="h-full flex flex-col -m-4">
@@ -200,7 +200,7 @@ export default function ProjectsWindow() {
         )}
 
         <div className="flex-1 flex items-center gap-1.5 md:gap-2 px-2 md:px-3 py-1.5 rounded-md bg-[rgba(0,0,0,0.4)] border border-[rgba(0,255,65,0.1)] min-w-0">
-          {loading && currentUrl ? (
+          {loading ? (
             <Loader2 size={10} className="text-[#00ff41] animate-spin shrink-0" />
           ) : blocked ? (
             <ShieldAlert size={10} className="text-[#ffb000] shrink-0" />
@@ -232,13 +232,13 @@ export default function ProjectsWindow() {
             <iframe
               src={currentUrl}
               className="w-full h-full border-0 bg-white"
-              onLoad={() => setLoading(false)}
+              onLoad={() => setLoadedUrl(currentUrl)}
               sandbox="allow-scripts allow-same-origin allow-popups"
             />
           )
         ) : (
           <div className="h-full overflow-y-auto p-3 md:p-4 custom-scrollbar">
-            <ProjectList onNavigate={handleNavigate} />
+            <ProjectList onNavigate={onNavigate} />
           </div>
         )}
       </div>

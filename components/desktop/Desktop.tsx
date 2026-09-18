@@ -1,7 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import dynamic from "next/dynamic";
-import { DESKTOP_ICONS, type WindowId } from "@/lib/constants";
+import { DESKTOP_ICONS, PROJECTS, type WindowId } from "@/lib/constants";
 import { useWindowManager } from "@/lib/use-window-manager";
 import DesktopIcon from "./DesktopIcon";
 import Taskbar from "./Taskbar";
@@ -17,6 +18,8 @@ import SkillsWindow from "@/components/windows/SkillsWindow";
 import ExperienceWindow from "@/components/windows/ExperienceWindow";
 import ContactWindow from "@/components/windows/ContactWindow";
 
+const ICON_GRID = "grid grid-cols-3 md:grid-cols-1 gap-4 md:gap-1 w-fit";
+
 const BackgroundScene = dynamic(
   () => import("@/components/three/BackgroundScene"),
   { ssr: false }
@@ -30,9 +33,8 @@ const WINDOW_CONFIG: Record<WindowId, { title: string; width: number; height: nu
   contact: { title: "Contact.sys", width: 440, height: 520 },
 };
 
-const WINDOW_CONTENT: Record<WindowId, React.ComponentType> = {
+const WINDOW_CONTENT: Record<Exclude<WindowId, "projects">, React.ComponentType> = {
   about: AboutWindow,
-  projects: ProjectsWindow,
   skills: SkillsWindow,
   experience: ExperienceWindow,
   contact: ContactWindow,
@@ -49,6 +51,17 @@ export default function Desktop() {
     focusWindow,
     updatePosition,
   } = useWindowManager();
+  const [projectUrl, setProjectUrl] = useState<string | null>(null);
+
+  const handleOpen = (id: WindowId) => {
+    if (id === "projects") setProjectUrl(null);
+    openWindow(id);
+  };
+
+  const openProject = (url: string) => {
+    setProjectUrl(url);
+    openWindow("projects");
+  };
 
   return (
     <div className="fixed inset-0 overflow-hidden">
@@ -59,15 +72,25 @@ export default function Desktop() {
       <div className="relative z-[1] flex flex-col h-[100dvh] pointer-events-none">
         <DesktopClock />
 
-        <div className="flex-1 flex flex-col justify-center md:justify-start items-center md:items-start px-6 md:px-6 md:pt-24">
-          <div className="grid grid-cols-3 md:grid-cols-1 gap-4 md:gap-1 w-fit mx-auto md:mx-0">
+        <div className="flex-1 flex flex-col md:flex-row justify-center md:justify-between items-center md:items-start gap-6 md:gap-0 px-6 md:pt-24">
+          <div className={ICON_GRID}>
             {DESKTOP_ICONS.map((icon) => (
               <DesktopIcon
                 key={icon.id}
-                id={icon.id}
                 label={icon.label}
                 icon={icon.icon}
-                onOpen={openWindow}
+                onOpen={() => handleOpen(icon.id)}
+                className="pointer-events-auto"
+              />
+            ))}
+          </div>
+          <div className={ICON_GRID}>
+            {PROJECTS.map((project) => (
+              <DesktopIcon
+                key={project.name}
+                label={`${project.name}.app`}
+                imageSrc={project.icon}
+                onOpen={() => openProject(project.url)}
                 className="pointer-events-auto"
               />
             ))}
@@ -87,7 +110,7 @@ export default function Desktop() {
 
       {Object.values(windows).map((win) => {
         const config = WINDOW_CONFIG[win.id];
-        const Content = WINDOW_CONTENT[win.id];
+        const Content = win.id === "projects" ? null : WINDOW_CONTENT[win.id];
         return (
           <Window
             key={win.id}
@@ -101,7 +124,7 @@ export default function Desktop() {
             onFocus={focusWindow}
             onUpdatePosition={updatePosition}
           >
-            <Content />
+            {Content ? <Content /> : <ProjectsWindow url={projectUrl} onNavigate={setProjectUrl} />}
           </Window>
         );
       })}
